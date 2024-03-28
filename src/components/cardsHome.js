@@ -8,15 +8,16 @@ import {
   Image
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-
+import Feed from "./feed";
 const CardsHome = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/fundo/fundo2.png")}
+        source={require("../../assets/fundo/Fundo.jpg")}
         style={styles.backgroundImage}
       > 
-        <Animatable.Image animation={"flipInY"} source={require("../../assets/dinozoo.png")} style={styles.img}></Animatable.Image>
+      <Feed/>
+        {/* <Animatable.Image animation={"flipInY"} source={require("../../assets/dinozoo.png")} style={styles.img}></Animatable.Image> */}
       </ImageBackground>
     </View>
     );

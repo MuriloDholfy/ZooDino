@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const  CardsZoo = () =>   {
 const renderCard = (index) => (
+  
     <TouchableOpacity>
         <View key={index} style={styles.card}>
         <Image
@@ -25,7 +26,7 @@ const renderCard = (index) => (
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/fundo/fundo2.png")}
+        source={require("../../assets/fundo/Fundo.jpg")}
         style={styles.backgroundImage}
       >
         {Array.from({ length: 3 }, (_, index) => renderRow(index))}

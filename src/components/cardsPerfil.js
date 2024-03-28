@@ -13,7 +13,7 @@ const CardsPerfil = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/fundo/fundo2.png")}
+        source={require("../../assets/fundo/Fundo.jpg")}
         style={styles.backgroundImage}
       >
         <View style={styles.card}>

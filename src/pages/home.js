@@ -44,6 +44,7 @@ function HomeScreen() {
 
 function ProfileScreen() {
   return (
+    
     <CardsPerfil/>
   );
 }
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 12,
-    backgroundColor: "rgba(217, 217, 217, 0.58)",
+    backgroundColor: "rgb(255 255 255 / 26%);",
   },
   tabActive: {
     borderBottomWidth: 2,
