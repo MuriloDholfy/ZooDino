@@ -1,4 +1,8 @@
 # ZooDino
+<<<<<<< HEAD
+=======
+<h1>-- Dependencias --</h1>
+>>>>>>> 307de7da337c49b8481dddf0800a52cb86d7ae33
 <h3>-- Coloquem as dependencias do projetos aqui --</h3>
 -- Dependencias -- <br>
  @babel/core@7.24.0 <br>
