@@ -38,7 +38,8 @@ export default function Home() {
 
 function HomeScreen() {
   return (
-    <CardsHome/>
+    
+      <CardsHome/>
   );
 }
 
@@ -54,6 +55,7 @@ function ZooScreen() {
     <CardsZoo/>
   );
 }
+
 
 function MyTabBar({ state, descriptors, navigation }) {
   const icons = {

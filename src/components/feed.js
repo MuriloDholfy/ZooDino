@@ -4,12 +4,10 @@ import { Dimensions, ScrollView, StyleSheet, View, Image, Text } from 'react-nat
 const { width } = Dimensions.get('window');
 const itemWidth = width / 6;
 const gap = (width - itemWidth * 5) / 6;
-import Navbar from './navbar';
 export default function Feed() {
     return (
         <View style={styles.container}>
             
-                <Navbar/>
             
             <View style={styles.content}>
                 <ScrollView>

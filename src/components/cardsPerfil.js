@@ -19,7 +19,7 @@ const CardsPerfil = () => {
         <View style={styles.card}>
           <View style={styles.cardBorderTop}></View>
      
-          <Animatable.Image animation={"flipInY"} source={require("../../assets/user.png")} style={styles.img}></Animatable.Image>
+          <Animatable.Image animation={"flipInY"} source={require("../../assets/biomas/BiomaDeserto.png")} style={styles.img}></Animatable.Image>
           <Text style={styles.person}>DinoTroxa</Text>
           <Text style={styles.job}>T-Rex</Text>
           <Text style={styles.descricao}> Title asdasidgad aigusd agda sdga ksjga sdg aksdgasdkasdjg  gga sjdakgjd askjdg asdgasdjasgjkdagsd g gg asjdajsd gagd kgagjsdgjakda~sda ld kal ~skdakshd al~ksda~sk hasd has~dlkahsdkajhs ~dlahs dlakshd ~lakshd ãklhsd ãlkjshdãlks hdãlksdh çajsdh asdj hasldk ha</Text>
@@ -40,10 +40,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(243, 244, 246, 1)",
   },
   backgroundImage: {
-    flex: 1,
     resizeMode: "cover", // or "stretch" or "contain"
     height: "100%",
-    width: "100%",
+    width: "103%",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -73,9 +72,11 @@ const styles = StyleSheet.create({
   img: {
     width: 150,
     height: 150,
-    backgroundColor: "#001B36",
+    backgroundColor: "#002900",
     borderRadius: 100,
     bottom: 100,
+    borderWidth: '2px',
+    borderColor: 'white'
 
   },
   person: {

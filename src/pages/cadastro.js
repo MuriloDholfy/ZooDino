@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
-  const [sobrenome, setSobrenome] = useState("");
+  const [telefone, setTelefone] = useState("");
   const [senha, setSenha] = useState("");
   const [email, setEmail] = useState("");
   const [esconderSenha, setEsconderSenha] = useState(true);
@@ -60,12 +60,12 @@ export default function Cadastro() {
                       />
                     </View>
                     <View style={{ flex: 1, marginLeft: 8 }}>
-                      <Text style={styles.label}>Sobrenome:</Text>
+                      <Text style={styles.label}>Telefone:</Text>
                       <TextInput
                         style={styles.input}
                         placeholder=""
-                        value={sobrenome}
-                        onChangeText={(texto) => setSobrenome(texto)}
+                        value={telefone}
+                        onChangeText={(texto) => setTelefone(texto)}
                       />
                     </View>
                   </View>
@@ -82,6 +82,18 @@ export default function Cadastro() {
                 </View>
                 <View style={styles.inputGroup}>
                   <Text style={styles.label}>Senha:</Text>
+                  <TextInput
+                    style={styles.input}
+                    placeholder=""
+                    value={senha}
+                    onChangeText={(texto) => setSenha(texto)}
+                    secureTextEntry={esconderSenha}
+                  />
+                  <TouchableOpacity
+                    style={styles.icon}
+                    onPress={() => setEsconderSenha(!esconderSenha)}
+                  ></TouchableOpacity>
+                  <Text style={styles.label}>Confirmar Senha:</Text>
                   <TextInput
                     style={styles.input}
                     placeholder=""
@@ -133,7 +145,7 @@ export default function Cadastro() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     height: "100%",
     width: "100%",
     backgroundColor: "rgba(17, 24, 39, 1)",
@@ -222,7 +234,7 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   backgroundImage: {
-    flex: 1,
+    flex: 3,
     resizeMode: "cover", // or "stretch" or "contain"
     height: "100%",
     width: "100%",

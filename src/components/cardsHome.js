@@ -34,10 +34,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(243, 244, 246, 1)",
   },
   backgroundImage: {
-    flex: 1,
     resizeMode: "cover", // or "stretch" or "contain"
     height: "100%",
-    width: "100%",
+    width: "103%",
     alignItems: "center",
     justifyContent: "center",
   },
