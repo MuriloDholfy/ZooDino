@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "11e0ef83-c405-4a71-b026-301dc7002c39",
+		"name": "APIZooDino",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33755133",
+		"_collection_link": "https://speeding-crater-344241.postman.co/workspace/My-Workspace~87515ffa-e2b6-4a6e-867a-200bb1e3aa4b/collection/33755133-11e0ef83-c405-4a71-b026-301dc7002c39?action=share&source=collection_link&creator=33755133"
+	},
+	"item": [
+		{
+			"name": "insertUser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"        "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nome",
+							"value": "josefa pereira",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jopsouza@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "senha",
+							"value": "123123",
+							"type": "text"
+						},
+						{
+							"key": "telefone",
+							"value": "11949758272",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/apiZooDino/userInsert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"apiZooDino",
+						"userInsert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertTerritorio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nomeTerritorio",
+							"value": "Polo Norte",
+							"type": "text"
+						},
+						{
+							"key": "imgTerritorio",
+							"value": "pqpqpallalq",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/apiZooDino/territorioInsert?nomeTerritorio=Polo norte&imgTerritorio=kadkakdaldlq",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"apiZooDino",
+						"territorioInsert"
+					],
+					"query": [
+						{
+							"key": "nomeTerritorio",
+							"value": "Polo norte"
+						},
+						{
+							"key": "imgTerritorio",
+							"value": "kadkakdaldlq"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertAnimal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nomeAnimal",
+							"value": "lobo",
+							"type": "text"
+						},
+						{
+							"key": "imgAnimal",
+							"value": "auuuuuuuuuuu",
+							"type": "text"
+						},
+						{
+							"key": "descricaoAnimal",
+							"value": "frio e calculista",
+							"type": "text"
+						},
+						{
+							"key": "idTerritorio",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/apiZooDino/animalInsert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"apiZooDino",
+						"animalInsert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/apiZooDino/userShow?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"apiZooDino",
+						"userShow"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showTerritorio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/apiZooDino/territorioShow?idTerritorio=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"apiZooDino",
+						"territorioShow"
+					],
+					"query": [
+						{
+							"key": "idTerritorio",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showAnimal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/apiZooDino/animalShow?idAnimal=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"apiZooDino",
+						"animalShow"
+					],
+					"query": [
+						{
+							"key": "idAnimal",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "PUT",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updateTerritorio",
+			"request": {
+				"method": "PUT",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updateAnimal",
+			"request": {
+				"method": "PUT",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "deleteTerritorio",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAnimal",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
