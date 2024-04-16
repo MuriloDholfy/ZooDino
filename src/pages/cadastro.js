@@ -1,22 +1,56 @@
 import React, { useState } from "react";
 import { Text, View, Image, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Modal,} from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import axios from "axios";
 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [senhaIgual, setSenhaIgual] = useState(""); 
   const [email, setEmail] = useState("");
   const [esconderSenha, setEsconderSenha] = useState(true);
   const [erro, setErro] = useState(false);
   const [formPosition, setFormPosition] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleCadastro = () => {
-    if (email == "Dino" && senha == "1234") {
-      var erro = false;
+  const carregar = async () => {
+    if (senha != confirmarSenha) {
+      setSenhaIgual(false);
+      return (console.log('as senhas nao coincidem')) 
+    } else (setSenhaIgual(true))
+    {
+      
+    
+  
+ 
+  const dadosUser = {
+    'nome' : nome,
+    'email': email,
+    'senha': senha,
+    'telefone': telefone,
+
+  }
+
+
+  const axiosConfig = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
     }
   };
+
+  try{
+    const response = await axios.post('http://localhost/apiZooDino/userInsert', dadosUser, axiosConfig);
+    console.log(response.data)
+    navigation.navigate('Login'); 
+  } catch (error) {
+      console.error('Erro ao criar usuário', error);
+  }
+}
+}
+
+
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -97,8 +131,8 @@ export default function Cadastro() {
                   <TextInput
                     style={styles.input}
                     placeholder=""
-                    value={senha}
-                    onChangeText={(texto) => setSenha(texto)}
+                    value={confirmarSenha}
+                    onChangeText={(texto) => setConfirmarSenha(texto)}
                     secureTextEntry={esconderSenha}
                   />
                   <TouchableOpacity
@@ -117,7 +151,7 @@ export default function Cadastro() {
                     </Text>
                   </View>
                 </View>
-                <TouchableOpacity style={styles.sign} onPress={() =>  navigation.navigate('Home')}>
+                <TouchableOpacity style={styles.sign} onPress={carregar}>
                   <Text
                     style={{
                       color: "#fff",
@@ -140,7 +174,10 @@ export default function Cadastro() {
         </View>
       </ImageBackground>
     </View>
+  
   );
+  
+
 }
 
 const styles = StyleSheet.create({

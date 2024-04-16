@@ -139,7 +139,7 @@ class UserController{
         }
     
         // Verifica se todos os campos necessários foram enviados
-        $camposObrigatorios = ['nome', 'email', 'senha', 'telefone', 'cep', 'endereco', 'numero', 'bairro', 'cidade'];
+        $camposObrigatorios = ['nome', 'email', 'senha', 'telefone'];
         foreach ($camposObrigatorios as $campo) {
             if (!isset($_POST[$campo]) || empty($_POST[$campo])) {
                 // Se algum campo estiver faltando ou vazio, retorna uma resposta de erro
@@ -156,11 +156,6 @@ class UserController{
             'email' => $_POST['email'],
             'senha' => $_POST['senha'],
             'telefone' => $_POST['telefone'],
-            'cep' => $_POST['cep'],
-            'endereco' => $_POST['endereco'],
-            'numero' => $_POST['numero'],
-            'bairro' => $_POST['bairro'],
-            'cidade' => $_POST['cidade']
         ];
     
         try {

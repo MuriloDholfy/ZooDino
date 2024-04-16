@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import asyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login(AppNavigator) {
   const [senha, setSenha] = useState("");
@@ -21,19 +23,45 @@ export default function Login(AppNavigator) {
   const [formPosition, setFormPosition] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleLogin = () => {
-    if (email === "Dino" && senha === "1234") {
-      setIsModalVisible(false);
-      setErro(false);
-      navigation.navigate("Home");
-    } else {
-      setErro(true);
-      setIsModalVisible(false);
-      setTimeout(() => {
-        location.reload();
-      }, 1000);
-      navigation.navigate("Login");
+  const handleLogin = async() => {
+    if (!email || !senha) {
+      setErro('Por favor preencha todos os campos');
+      return;
+
+    } 
+
+    const dadosUser = {
+      'email': email,
+      'senha': senha
+    
+    };
+    
+    try{
+      const response = await axios.post('http://localhost/apiZooDino/userCheck', dadosUser, axiosConfig);
+      console.log(response.data)
+      if (response.statusText=='OK!') {
+        console.log('Login Bem sucedido');
+        await asyncStorage.setItem('userCheck', JSON.stringify(dadosUser));
+        navigation.navigate("Home");
+      } else {
+        setErro('O login não coincide');
+      }
+    } catch (error) {
+        console.error('Erro ao entrar', error);
     }
+    
+    // if (email === "Dino" && senha === "1234") {
+    //   setIsModalVisible(false);
+    //   setErro(false);
+    //   navigation.navigate("Home");
+    // } else {
+    //   setErro(true);
+    //   setIsModalVisible(false);
+    //   setTimeout(() => {
+    //     location.reload();
+    //   }, 1000);
+    //   navigation.navigate("Login");
+    // }
   };
 
   const toggleModal = () => {
@@ -124,11 +152,6 @@ export default function Login(AppNavigator) {
                         color: "#fff",
                         textAlign: "center",
                         fontWeight: "600",
-                      }}
-                      onPress={() => {
-                        erro === false
-                          ? navigation.navigate("Home")
-                          : (erro = true);
                       }}
                     >
                       Confirmar
