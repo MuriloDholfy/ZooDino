@@ -179,6 +179,31 @@ class UserController{
         }
     }
     
+    public function check () {
+        $camposObrigatorios = ['email', 'senha'];
+        foreach ($camposObrigatorios as $campo) {
+            if (!isset($_POST[$campo]) || empty ($_POST [$campo])) {
+                http_response_code(402);
+                echo json_encode (['mensagem' => 'Todos os campos são obrigatórios']);
+                return;
+            
+            }
+        }
+
+        $email = $_POST ['email'];
+        $senha = $_POST ['senha'];
+    try {
+        $user = userDao:: checkCredentials($email, $senha);
+        http_response_code (200);
+        echo json_encode ($user);
+        return true;
+    } catch (error) {
+        //Se o usuário não for encontrado, retorna uma resposta de erro
+        http_response_code (404);
+        echo json_encode (['mensagem' => 'Usuário não encontrado']);
+        return false;
+    }
+    }
 
 
 

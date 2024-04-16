@@ -15,6 +15,7 @@ $routes = [
     '/userInsert' => 'UserController@store',
     '/userShow' => 'UserController@show',
     '/userUpdate' => 'UserController@update',
+    '/userCheck' => 'UserController@check',
 
     // Rotas Territorio
     '/territorio' => 'TerritorioController@index',
