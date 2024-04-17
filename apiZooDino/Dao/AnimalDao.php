@@ -29,7 +29,7 @@ header('Access-Control-Allow-Origin: *');
 
         public static function selectById($id){
             $conexao = Conexao::conectar();
-            $query = "SELECT * FROM tbanimal WHERE id = ?";
+            $query = "SELECT * FROM tbanimal WHERE idAnimal = ?";
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(1, $id);
             $stmt->execute();
@@ -37,7 +37,7 @@ header('Access-Control-Allow-Origin: *');
         }
         public static function delete($id){
             $conexao = Conexao::conectar();
-            $query = "DELETE FROM tbanimal WHERE id = ?";
+            $query = "DELETE FROM tbanimal WHERE idAnimal = ?";
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(1, $id);
             return  $stmt->execute();

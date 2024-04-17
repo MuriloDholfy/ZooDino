@@ -13,7 +13,7 @@ import {
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import asyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login(AppNavigator) {
   const [senha, setSenha] = useState("");
@@ -23,46 +23,33 @@ export default function Login(AppNavigator) {
   const [formPosition, setFormPosition] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleLogin = async() => {
+  const handleLogin = async () => {
     if (!email || !senha) {
-      setErro('Por favor preencha todos os campos');
-      return;
-
-    } 
-
-    const dadosUser = {
-      'email': email,
-      'senha': senha
-    
-    };
-    
-    try{
-      const response = await axios.post('http://localhost/apiZooDino/userCheck', dadosUser, axiosConfig);
-      console.log(response.data)
-      if (response.statusText=='OK!') {
-        console.log('Login Bem sucedido');
-        await asyncStorage.setItem('userCheck', JSON.stringify(dadosUser));
-        navigation.navigate("Home");
-      } else {
-        setErro('O login não coincide');
-      }
-    } catch (error) {
-        console.error('Erro ao entrar', error);
+        setErro('Por favor, preencha todos os campos');
+        return;
     }
-    
-    // if (email === "Dino" && senha === "1234") {
-    //   setIsModalVisible(false);
-    //   setErro(false);
-    //   navigation.navigate("Home");
-    // } else {
-    //   setErro(true);
-    //   setIsModalVisible(false);
-    //   setTimeout(() => {
-    //     location.reload();
-    //   }, 1000);
-    //   navigation.navigate("Login");
-    // }
-  };
+
+    try {
+        const response = await axios.post('http://localhost/apiZooDino/userCheck', { email, senha });
+        if (response.status === 200 && response.data) {
+            console.log('Login bem sucedido');
+            await AsyncStorage.setItem('userCheck', JSON.stringify(response.data));
+            setIsModalVisible(!isModalVisible);
+            navigation.navigate('Home');
+        } else {
+            setErro('Usuário ou senha inválidos. Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        setErro('Erro ao fazer login. Por favor, tente novamente mais tarde.');
+    }
+};
+
+const cadastro = () => {
+  navigation.navigate("Cadastro")
+  setIsModalVisible(!isModalVisible);
+}
+
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -87,7 +74,7 @@ export default function Login(AppNavigator) {
 
         {erro && (
           <View>
-            <Text style={styles.txtInput}>Usuário ou senha inválido(s)</Text>
+            <Text style={styles.txtError}>Usuário ou senha inválido(s), tente novamente!</Text>
           </View>
         )}
 
@@ -161,7 +148,7 @@ export default function Login(AppNavigator) {
                 <Text style={styles.signup}>
                   Não tem uma conta?{" "}
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Cadastro")}
+                    onPress={() => cadastro()}
                   >
                     <Text style={{ color: "#fff" }}>cadastro</Text>
                   </TouchableOpacity>
@@ -323,4 +310,8 @@ const styles = StyleSheet.create({
     bottom:220,
 
   },
+  txtError: {
+    color:"#FF0000",
+    fontSize:25
+  }
 });

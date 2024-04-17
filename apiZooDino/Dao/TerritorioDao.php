@@ -27,7 +27,7 @@ header('Access-Control-Allow-Origin: *');
 
         public static function selectById($id){
             $conexao = Conexao::conectar();
-            $query = "SELECT * FROM tbterritorio WHERE id = ?";
+            $query = "SELECT * FROM tbterritorio WHERE idTerritorio = ?";
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(1, $id);
             $stmt->execute();
@@ -35,7 +35,7 @@ header('Access-Control-Allow-Origin: *');
         }
         public static function delete($id){
             $conexao = Conexao::conectar();
-            $query = "DELETE FROM tbterritorio WHERE id = ?";
+            $query = "DELETE FROM tbterritorio WHERE idTerritorio = ?";
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(1, $id);
             return  $stmt->execute();
